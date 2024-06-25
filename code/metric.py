@@ -5,12 +5,12 @@
 @Date    ：2024/5/9 16:15
 """
 import json
-
+from typing import List, Tuple
 import nltk
 from rouge import Rouge
 
 
-def metric(pred: str, answer_list: list[str]):
+def metric(pred: str, answer_list: List[str]) -> Tuple[float, dict]:
     # 计算BLEU
     print(pred, answer_list)
     reference = [answer.split() for answer in answer_list]
@@ -25,7 +25,7 @@ def metric(pred: str, answer_list: list[str]):
 
 
 if __name__ == '__main__':
-    with open('../data/crag_200_result.jsonl', 'r') as f:
+    with open('../data/baidu_chat_results.jsonl', 'r') as f:
         lines = f.readlines()
     bleu_scores = []
     rouge_l_p = []
